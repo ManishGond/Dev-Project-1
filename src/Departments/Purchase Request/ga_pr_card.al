@@ -3,7 +3,7 @@ page 50101 "GA PR Card"
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Documents;
-    SourceTable = "GA PR Table";
+    SourceTable = "PurchaseRequisition Table";
     Caption = 'GA Purchase Requisition Card';
     Editable = true;
 
@@ -18,13 +18,14 @@ page 50101 "GA PR Card"
                     ApplicationArea = All;
                     trigger OnAssistEdit()
                     var
-                        LookupPage: Page "No Series Page";
-                        LookupRec: Record "No. Series Table";
+                        LookupPage: Page "No. Series";
+                        LookupRec: Record "No. Series";
                     begin
-                        LookupRec.FindSet();
+
+                        LookupRec.FindFirst();
                         LookupPage.LookupMode(true);
                         if LookupPage.RunModal() = Action::LookupOK then begin
-                            Rec."Document No." := LookupRec."Code 1";
+                            Rec."Document No." := LookupRec."Code";
                             Rec."Department Name" := LookupRec.Description;
                         end;
                     end;

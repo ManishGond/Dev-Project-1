@@ -1,4 +1,4 @@
-table 50100 "GA PR Table"
+table 50100 "PurchaseRequisition Table"
 {
     DataClassification = ToBeClassified;
 
