@@ -2,7 +2,7 @@ page 50100 "GA Purchase Requisition List"
 {
     Caption = 'GA Purchase Requisition';
     PageType = List;
-    Editable = true;
+    Editable = false;
     UsageCategory = Lists;
     ApplicationArea = All;
     SourceTable = "PurchaseRequisition Table";

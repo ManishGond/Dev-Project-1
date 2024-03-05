@@ -1,13 +1,24 @@
 table 50100 "PurchaseRequisition Table"
 {
     DataClassification = ToBeClassified;
+    LookupPageId = "GA PR Card";
+    DataCaptionFields = "Document No.", "Requestor Name";
+    DrillDownPageID = "GA PR Card";
+
 
     fields
     {
-        field(1; "Document No."; Text[50])
+        field(1; "Document No."; Code[50])
         {
             Caption = 'Document No.';
             DataClassification = ToBeClassified;
+
+            trigger OnValidate()
+            begin
+                if "Document No." <> xRec."Document No." then begin
+                    "Document No." := '';
+                end;
+            end;
         }
         field(2; "Requestor Name"; Text[50])
         {
@@ -64,7 +75,5 @@ table 50100 "PurchaseRequisition Table"
             Clustered = true;
         }
     }
-    var
-        myInt: Integer;
 
 }
