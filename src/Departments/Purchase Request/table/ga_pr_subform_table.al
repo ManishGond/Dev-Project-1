@@ -8,78 +8,65 @@ table 50102 "GA PR Subform Table"
         {
             Caption = 'Type';
         }
-        field(2; "No."; Code[20])
+        field(2; "Line No."; Code[20])
         {
-            Caption = 'No.';
+            Caption = 'Line No.';
         }
-        field(3; "GST/HST"; Option)
+        field(3; "Item No"; Code[20])
         {
-            Caption = 'GST/HST';
-            OptionMembers = " ",Acquisition,"Self Assessment",Rebate,"New Housing Rebates","Pension Rebate";
+            Caption = 'Item No';
+            
         }
-        field(4; Description; Text[50])
-        {
-            Caption = 'Description';
-        }
-        field(5; "Location Code"; Code[20])
-        {
-
-            Caption = 'Location Code';
-        }
-        field(7; "Bin Code"; Code[20])
-        {
-            Caption = 'Bin Code';
-        }
-        field(8; "Quantity"; Integer)
-        {
-            Caption = 'Quantity';
-            DataClassification = ToBeClassified;
-        }
-        field(9; "Reserved Quantity"; Integer)
-        {
-            Caption = 'Reserved Quantity';
-            DataClassification = ToBeClassified;
-        }
-        field(10; "Unit Of Measure Code"; Code[20])
+        field(4; "Unit Of Measure Code"; Code[20])
         {
             Caption = 'Unit Of Measure Code';
 
         }
-        field(11; "Direct Unit Cost Excl. Tax"; Integer)
+        field(5; Description; Text[50])
         {
-            Caption = 'Direct Unit Cost Excl. Tax';
+            Caption = 'Description';
+        }
+        field(6; Description2; Text[50])
+        {
+            Caption = 'Description2';
+        }
+        field(7; "Reserved Quantity"; Integer)
+        {
+            Caption = 'Reserved Quantity';
             DataClassification = ToBeClassified;
         }
-        field(12; "Tax Area Code"; Code[20])
+        field(9; "Requestor User Id"; Integer)
         {
-            Caption = 'Tax Area Code';
+            Caption = 'Requestor User Id';
             DataClassification = ToBeClassified;
         }
-        field(13; "Tax Group Code"; Code[20])
+        field(10; "Requestor User Name"; Integer)
         {
-            Caption = 'Tax Group Code';
+            Caption = 'Requestor User Name';
             DataClassification = ToBeClassified;
         }
-        field(14; "Line Amount Excl.Tax"; Integer)
+        field(11; "Deptt Code";Code[20])
         {
-            Caption = 'Line Amount Excl.Tax';
+            Caption = 'Deptt Code';
             DataClassification = ToBeClassified;
         }
-        field(15; "Qty.to Recieve"; Integer)
+        field(12; "Sub Account Code"; Code[20])
         {
-            Caption = 'Qty.to Recieve';
+            Caption = 'Sub Account code';
             DataClassification = ToBeClassified;
         }
-        field(16; "Quantity Recieved"; Integer)
+        field(13; "Date Needed"; Date)
         {
-            Caption = 'Quantity Recieved';
+            Caption = 'Date Needed';
             DataClassification = ToBeClassified;
         }
-        field(17; "Qty. to Invoice"; Integer)
+        field(14; "Purpose"; Option)
         {
-            Caption = 'Qty. to Invoice';
+            Caption = 'Purpose';
+            OptionMembers=test,live;
             DataClassification = ToBeClassified;
         }
+        
 
     }
 

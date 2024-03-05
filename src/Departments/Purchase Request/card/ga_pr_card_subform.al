@@ -16,79 +16,65 @@ page 50103 "GA PR Card Subform"
                     ApplicationArea = All;
 
                 }
-                field("No."; Rec."No.")
+                field("Line No.";Rec."Line No.")
                 {
                     ApplicationArea = Suite;
                 }
-                field("GST/HST"; Rec."GST/HST")
+                field("Item No";Rec."Item No")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Rec.Description)
-                {
-                    ApplicationArea = All;
-
-                }
-                field("Location Code"; Rec."Location Code")
+                field("Unit Of Measure Code";Rec."Unit Of Measure Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Bin Code"; Rec."Bin Code")
+                field(Description;Rec.Description)
                 {
                     ApplicationArea = All;
 
                 }
-                field(Quantity; Rec.Quantity)
+                field(Description2;Rec.Description2)
                 {
                     ApplicationArea = All;
 
                 }
-                field("Reserved Quantity"; Rec."Reserved Quantity")
+                field("Reserved Quantity";Rec."Reserved Quantity")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Unit Of Measure Code"; Rec."Unit Of Measure Code")
+                field("Requestor User Id";Rec."Requestor User Id")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Direct Unit Cost Excl. Tax"; Rec."Direct Unit Cost Excl. Tax")
+                field("Requestor User Name";Rec."Requestor User Name")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Tax Area Code"; Rec."Tax Area Code")
+                field("Deptt Code";Rec."Deptt Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Tax Group Code"; Rec."Tax Group Code")
+                field("Sub Account Code";Rec."Sub Account Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Line Amount Excl.Tax"; Rec."Line Amount Excl.Tax")
+                field("Date Needed";Rec."Date Needed")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Qty.to Recieve"; Rec."Qty.to Recieve")
+                field(Purpose;Rec.Purpose)
                 {
                     ApplicationArea = All;
 
                 }
-                field("Quantity Recieved"; Rec."Quantity Recieved")
-                {
-                    ApplicationArea = All;
-
-                }
-                field("Qty. to Invoice"; Rec."Qty. to Invoice")
-                {
-                    ApplicationArea = All;
-
-                }
+                
 
             }
         }
