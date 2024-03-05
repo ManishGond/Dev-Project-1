@@ -2,7 +2,7 @@ page 50101 "GA PR Card"
 {
     PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Documents;
     SourceTable = "GA PR Table";
     Caption = 'GA Purchase Requisition Card';
     Editable = true;
@@ -23,12 +23,17 @@ page 50101 "GA PR Card"
                     begin
                         LookupRec.FindSet();
                         LookupPage.LookupMode(true);
-                        LookupPage.SetTableView(LookupRec);
                         if LookupPage.RunModal() = Action::LookupOK then begin
                             Rec."Document No." := LookupRec."Code 1";
+                            Rec."Department Name" := LookupRec.Description;
                         end;
                     end;
                 }
+
+
+
+
+
                 field("Requestor Name"; Rec."Requestor Name") { ApplicationArea = All; }
                 field("Document Type"; Rec."Document Type") { ApplicationArea = All; }
                 field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
@@ -41,7 +46,7 @@ page 50101 "GA PR Card"
             }
             group("Open Purchase Req Line")
             {
-                repeater("Test")
+                repeater("")
                 {
                     field("Item"; myInt)
                     {
