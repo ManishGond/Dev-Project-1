@@ -41,9 +41,10 @@ table 50100 "PurchaseRequisition Table"
             Caption = 'Location Code';
             DataClassification = ToBeClassified;
         }
-        field(6; "Status"; Text[10])
+        field(6; "Status"; Option)
         {
             Caption = 'Status';
+            OptionMembers = Open,Released,"Pending Approval";
             DataClassification = ToBeClassified;
         }
         field(7; "Document Date"; Date)

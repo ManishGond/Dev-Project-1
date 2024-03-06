@@ -1,8 +1,13 @@
 page 50103 "GA PR Card Subform"
 {
+    CardPageId = "GA PR Card";
     Caption = 'Lines';
     PageType = ListPart;
     SourceTable = "Ga Pr Subform Table";
+    DelayedInsert = true;
+    LinksAllowed = false;
+    MultipleNewLines = true;
+    AutoSplitKey = true;
 
     layout
     {
@@ -16,65 +21,72 @@ page 50103 "GA PR Card Subform"
                     ApplicationArea = All;
 
                 }
-                field("Line No.";Rec."Line No.")
+                field("Line No."; Rec."Line No.")
                 {
                     ApplicationArea = Suite;
+
                 }
-                field("Item No";Rec."Item No")
+                field("Document No."; Rec."Document No.")
+                {
+                    Visible = False;
+                    ApplicationArea = All;
+
+                }
+                field("Item No"; Rec."Item No")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit Of Measure Code";Rec."Unit Of Measure Code")
+                field("Unit Of Measure Code"; Rec."Unit Of Measure Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field(Description;Rec.Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
 
                 }
-                field(Description2;Rec.Description2)
+                field(Description2; Rec.Description2)
                 {
                     ApplicationArea = All;
 
                 }
-                field("Reserved Quantity";Rec."Reserved Quantity")
+                field("Reserved Quantity"; Rec."Reserved Quantity")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Requestor User Id";Rec."Requestor User Id")
+                field("Requestor User Id"; Rec."Requestor User Id")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Requestor User Name";Rec."Requestor User Name")
+                field("Requestor User Name"; Rec."Requestor User Name")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Deptt Code";Rec."Deptt Code")
+                field("Deptt Code"; Rec."Deptt Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Sub Account Code";Rec."Sub Account Code")
+                field("Sub Account Code"; Rec."Sub Account Code")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Date Needed";Rec."Date Needed")
+                field("Date Needed"; Rec."Date Needed")
                 {
                     ApplicationArea = All;
 
                 }
-                field(Purpose;Rec.Purpose)
+                field(Purpose; Rec.Purpose)
                 {
                     ApplicationArea = All;
 
                 }
-                
+
 
             }
         }

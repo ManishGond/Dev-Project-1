@@ -8,14 +8,17 @@ table 50102 "GA PR Subform Table"
         {
             Caption = 'Type';
         }
-        field(2; "Line No."; Code[20])
+        field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
+            Editable = false;
+
         }
         field(3; "Item No"; Code[20])
         {
             Caption = 'Item No';
-            
+            TableRelation = "PurchaseRequisition Table";
+
         }
         field(4; "Unit Of Measure Code"; Code[20])
         {
@@ -45,7 +48,7 @@ table 50102 "GA PR Subform Table"
             Caption = 'Requestor User Name';
             DataClassification = ToBeClassified;
         }
-        field(11; "Deptt Code";Code[20])
+        field(11; "Deptt Code"; Code[20])
         {
             Caption = 'Deptt Code';
             DataClassification = ToBeClassified;
@@ -63,13 +66,30 @@ table 50102 "GA PR Subform Table"
         field(14; "Purpose"; Option)
         {
             Caption = 'Purpose';
-            OptionMembers=test,live;
+            OptionMembers = test,live;
             DataClassification = ToBeClassified;
         }
-        
+        field(1000; "Document No."; Code[20])
+        {
+            Caption = 'Document No.';
+            DataClassification = ToBeClassified;
+        }
+
 
     }
 
+    keys
+    {
+        // key(Pk; "Line No.")
+        // {
+        //     Clustered = true;
+        // }
+
+        key(Pk; Description)
+        {
+            Clustered = true;
+        }
+    }
 
 
     fieldgroups
@@ -84,6 +104,7 @@ table 50102 "GA PR Subform Table"
     begin
 
     end;
+
 
     trigger OnModify()
     begin
