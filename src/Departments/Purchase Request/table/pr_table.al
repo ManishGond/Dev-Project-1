@@ -78,15 +78,4 @@ table 50100 "PurchaseRequisition Table"
         }
     }
 
-    var
-        SalesLine: Record "PurchaseRequisition Table";
-
-    procedure SalesLinesExist(): Boolean
-    begin
-        SalesLine.Reset();
-        SalesLine.SetRange("Document Type", "Document Type");
-        SalesLine.SetRange("Document No.", "Document No.");
-        exit(not SalesLine.IsEmpty);
-    end;
-
 }
