@@ -51,7 +51,7 @@ page 50101 "GA PR Card"
 
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
-        // Text051: Label 'The service %1 %2 already exists.', Comment = '%1=Document type format;%2=Number;';
+    // Text051: Label 'The service %1 %2 already exists.', Comment = '%1=Document type format;%2=Number;';
 
 
     procedure AssistEdit(OldServHeader: Record "PurchaseRequisition Table"): Boolean
@@ -70,7 +70,7 @@ page 50101 "GA PR Card"
         IsHandled: Boolean;
     begin
         IsHandled := false;
-        NoSeriesCode := 'GA-IN-PR';
+        NoSeriesCode := 'GA-DE-PR';
         OnBeforeGetNoSeries(Rec, NoSeriesCode, IsHandled);
         if not IsHandled then
             exit(NoSeriesCode);
@@ -80,7 +80,7 @@ page 50101 "GA PR Card"
     [IntegrationEvent(false, false)]
     local procedure OnBeforeGetNoSeries(var ServiceHeader: Record "PurchaseRequisition Table"; var NoSeriesCode: Code[20]; var IsHandled: Boolean)
     begin
-       
+
     end;
 
 

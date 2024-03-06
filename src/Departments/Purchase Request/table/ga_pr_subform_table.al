@@ -80,15 +80,11 @@ table 50102 "GA PR Subform Table"
 
     keys
     {
-        // key(Pk; "Line No.")
-        // {
-        //     Clustered = true;
-        // }
-
-        key(Pk; Description)
+        key(Pk; "Line No.")
         {
             Clustered = true;
         }
+
     }
 
 
