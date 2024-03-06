@@ -44,6 +44,7 @@ table 50100 "PurchaseRequisition Table"
         field(6; "Status"; Option)
         {
             Caption = 'Status';
+            Editable = false;
             OptionMembers = Open,Released,"Pending Approval";
             DataClassification = ToBeClassified;
         }
@@ -76,5 +77,16 @@ table 50100 "PurchaseRequisition Table"
             Clustered = true;
         }
     }
+
+    var
+        SalesLine: Record "PurchaseRequisition Table";
+
+    procedure SalesLinesExist(): Boolean
+    begin
+        SalesLine.Reset();
+        SalesLine.SetRange("Document Type", "Document Type");
+        SalesLine.SetRange("Document No.", "Document No.");
+        exit(not SalesLine.IsEmpty);
+    end;
 
 }

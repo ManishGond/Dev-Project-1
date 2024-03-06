@@ -37,6 +37,8 @@ page 50101 "GA PR Card"
                 ApplicationArea = All;
             }
         }
+
+
     }
 
 
@@ -44,11 +46,66 @@ page 50101 "GA PR Card"
     actions
     {
 
+        area(Processing)
+        {
+            group("Request Approval")
+            {
+                Caption = 'Request Approval';
+                Image = SendApprovalRequest;
+                action(SendApprovalRequest)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Send A&pproval Request';
+                    Enabled = NOT OpenApprovalEntriesExist AND CanRequestApprovalForFlow;
+                    Image = SendApprovalRequest;
+                    Promoted = true;
+                    PromotedCategory = Category9;
+                    PromotedIsBig = true;
+                    ToolTip = 'Request approval of the document.';
+
+                    trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit ApprovalMgmt;
+                    begin
+                        if ApprovalsMgmt.CheckSalesApprovalPossible(Rec) then
+                            ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
+                    end;
+                }
+                action(CancelApprovalRequest)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Cancel Approval Re&quest';
+                    //Enabled = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
+                    Image = CancelApprovalRequest;
+                    Promoted = true;
+                    PromotedCategory = Category9;
+                    ToolTip = 'Cancel the approval request.';
+
+                    trigger OnAction()
+                    var
+                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+                    begin
+                        // ApprovalsMgmt.OnCancelSalesApprovalRequest(Rec);
+                        // WorkflowWebhookMgt.FindAndCancel(RecordId);
+                    end;
+                }
+
+            }
+        }
+
     }
+    trigger OnAfterGetRecord()
+    begin
+        //SetControlVisibility;
+    end;
 
     var
         GAHeader: Record "PurchaseRequisition Table";
-
+        OpenApprovalEntriesExist: Boolean;
+        OpenApprovalEntriesExistForCurrUser: Boolean;
+        CanRequestApprovalForFlow: Boolean;
+        CanCancelApprovalForRecord: Boolean;
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
     // Text051: Label 'The service %1 %2 already exists.', Comment = '%1=Document type format;%2=Number;';
@@ -82,6 +139,19 @@ page 50101 "GA PR Card"
     begin
 
     end;
+
+    // local procedure SetControlVisibility()
+    // var
+    //     ApprovalsMgmt: Codeunit ApprovalMgmt;
+    //     WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+    // // begin
+    // //     OpenApprovalEntriesExistForCurrUser := ApprovalsMgmt.HasOpenApprovalEntriesForCurrentUser(RecordId);
+    // //     OpenApprovalEntriesExist := ApprovalsMgmt.HasOpenApprovalEntries(RecordId);
+    // //     CanCancelApprovalForRecord := ApprovalsMgmt.CanCancelApprovalForRecord(RecordId);
+
+    // //     WorkflowWebhookMgt.GetCanRequestAndCanCancel(RecordId, CanRequestApprovalForFlow, CanCancelApprovalForFlow);
+    // //     IsCustomerOrContactNotEmpty := ("Sell-to Customer No." <> '') or ("Sell-to Contact No." <> '');
+    // // end;
 
 
 }
