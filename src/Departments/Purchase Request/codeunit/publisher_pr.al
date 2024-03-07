@@ -6,14 +6,11 @@ codeunit 50103 PublisherPr
     end;
 }
 
-codeunit 50106 PublishPr2
+codeunit 50106 PublisherPr2
 {
     [IntegrationEvent(false, false)]
-
-    procedure StatusChange()
+    procedure StatusChange(var ApprovalEntry: Record "Approval Entry")
     begin
-
     end;
-
 }
 

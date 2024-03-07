@@ -173,13 +173,13 @@ page 50104 "Requests to Approve Card"
                 var
                     ApprovalEntry: Record "Approval Entry";
                     ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-                    ApprovalSubscriber: Codeunit SubscriberPrManual;
-                    ApprovalPublisher: Codeunit PublishPr2;
+                    ApprovalRequest: Codeunit PublisherPr2;
+
                 begin
                     CurrPage.SetSelectionFilter(ApprovalEntry);
                     ApprovalsMgmt.ApproveApprovalRequests(ApprovalEntry);
 
-                    ApprovalPublisher.StatusChange();
+                    ApprovalRequest.StatusChange(ApprovalEntry);
                 end;
             }
             action(Reject)

@@ -11,10 +11,12 @@ codeunit 50104 SubscriberPr
 codeunit 50105 SubscriberPrManual
 {
     EventSubscriberInstance = StaticAutomatic;
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::PublishPr2, 'StatusChange', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::PublisherPr2, 'StatusChange', '', false, false)]
 
-    local procedure StatusChangeFunc()
+    local procedure StatusChangeFunc(var ApprovalEntry: Record "Approval Entry")
     begin
+        ApprovalEntry.SetRange("Document No.");
+        ApprovalEntry.FindSet();
         PRTable.Status := PRTable.Status::Released;
         Message('Approved!');
 
