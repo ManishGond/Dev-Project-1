@@ -15,7 +15,9 @@ page 50101 "GA PR Card"
             {
                 field("Document No."; Rec."Document No.")
                 {
+                    ShowMandatory = true;
                     ApplicationArea = All;
+                    NotBlank = true;
                     trigger OnAssistEdit()// three dot 
                     begin
                         if AssistEdit(xRec) then
@@ -42,7 +44,6 @@ page 50101 "GA PR Card"
     }
 
 
-
     actions
     {
 
@@ -65,9 +66,22 @@ page 50101 "GA PR Card"
 
                     trigger OnAction()
                     var
-                        myInt: Integer;
+                        RequestToApprove: Page "Requests to Approve Card";
+                        RequestToApproveTable: Record "Approval Entry";
+                        ApprovalRequestPublisher: Codeunit PublisherPr;
+                        ApprovalRequestSubscriber: Codeunit SubscriberPr;
+
                     begin
-                        Message('Testing');
+                        RequestToApproveTable."Document No." := Rec."Document No.";
+                        RequestToApproveTable."Sender ID" := UserId;
+                        RequestToApproveTable."Approver ID" := UserId;
+                        RequestToApproveTable.Status := RequestToApproveTable.Status::Open;
+                        RequestToApproveTable.Insert(true);
+
+                        ApprovalRequestPublisher.Approve();
+                        Rec.Status := Rec.Status::"Pending Approval";
+
+
                     end;
 
 
@@ -75,17 +89,15 @@ page 50101 "GA PR Card"
                 action(CancelApprovalRequest)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Cancel Approval Re&quest';
+                    Caption = 'Send Approval Request';
                     Enabled = true;
-                    Image = CancelApprovalRequest;
+                    Image = SendApprovalRequest;
                     Promoted = true;
                     PromotedCategory = Category9;
-                    ToolTip = 'Cancel the approval request.';
+                    PromotedIsBig = true;
+                    ToolTip = 'Request approval of the document.';
 
-                    trigger OnAction()
-                    begin
-                        Message('Testing Cancelled')
-                    end;
+
 
                 }
 
@@ -93,6 +105,12 @@ page 50101 "GA PR Card"
         }
 
     }
+    var
+        Test: Codeunit "Approvals Mgmt.";
+        ApprovalEntryRecord: Record "Approval Entry";
+        PurchaseRequisitionRecord: Record "PurchaseRequisition Table";
+        PurchaseRequisistionid: RecordId;
+
     trigger OnAfterGetRecord()
     begin
         //SetControlVisibility;
@@ -131,5 +149,7 @@ page 50101 "GA PR Card"
     begin
 
     end;
+
+
 
 }
