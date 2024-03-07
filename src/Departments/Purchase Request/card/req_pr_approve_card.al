@@ -1,7 +1,7 @@
 page 50104 "Requests to Approve Card"
 {
     ApplicationArea = Suite;
-    Caption = 'Requests to Approve Card';
+    Caption = 'Req Approve Card';
     Editable = false;
     PageType = List;
     RefreshOnActivate = true;
@@ -174,10 +174,19 @@ page 50104 "Requests to Approve Card"
                     ApprovalEntry: Record "Approval Entry";
                     ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     ApprovalRequest: Codeunit PublisherPr2;
+                    TableTest: Record "PurchaseRequisition Table";
 
                 begin
                     CurrPage.SetSelectionFilter(ApprovalEntry);
                     ApprovalsMgmt.ApproveApprovalRequests(ApprovalEntry);
+
+
+                    Tabletest.SetRange("Document No.", ApprovalEntry."Document No.");
+                    TableTest.FindSet();
+                    REPEAT
+                        TableTest.Status := TableTest.Status::Released;
+                        TableTest.Modify();
+                    UNTIL TableTest.Next() = 0;
 
                     ApprovalRequest.StatusChange(ApprovalEntry);
                 end;
