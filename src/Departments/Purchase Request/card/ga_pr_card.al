@@ -37,6 +37,8 @@ page 50101 "GA PR Card"
             part(PartPurchase; "GA PR Card Subform")
             {
                 ApplicationArea = All;
+                SubPageLink = "Document No." = field("Document No.");
+                SubPageView = order(ascending);
             }
         }
 
@@ -69,17 +71,22 @@ page 50101 "GA PR Card"
                         RequestToApprove: Page "Requests to Approve Card";
                         RequestToApproveTable: Record "Approval Entry";
                         ApprovalRequestPublisher: Codeunit PublisherPr;
-                        ApprovalRequestSubscriber: Codeunit SubscriberPr;
+
 
                     begin
+
                         RequestToApproveTable."Document No." := Rec."Document No.";
                         RequestToApproveTable."Sender ID" := UserId;
                         RequestToApproveTable."Approver ID" := UserId;
+
+
                         RequestToApproveTable.Status := RequestToApproveTable.Status::Open;
                         RequestToApproveTable.Insert(true);
 
-                        ApprovalRequestPublisher.Approve();
+
                         Rec.Status := Rec.Status::"Pending Approval";
+                        ApprovalRequestPublisher.Approve();
+
 
 
                     end;

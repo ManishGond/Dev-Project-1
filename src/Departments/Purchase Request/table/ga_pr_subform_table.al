@@ -17,7 +17,7 @@ table 50102 "GA PR Subform Table"
         field(3; "Item No"; Code[20])
         {
             Caption = 'Item No';
-            TableRelation = "PurchaseRequisition Table";
+
 
         }
         field(4; "Unit Of Measure Code"; Code[20])
@@ -69,7 +69,7 @@ table 50102 "GA PR Subform Table"
             OptionMembers = test,live;
             DataClassification = ToBeClassified;
         }
-        field(1000; "Document No."; Code[20])
+        field(15; "Document No."; Code[20])
         {
             Caption = 'Document No.';
             DataClassification = ToBeClassified;
@@ -80,7 +80,7 @@ table 50102 "GA PR Subform Table"
 
     keys
     {
-        key(Pk; "Line No.")
+        key(Pk; "Document No.", "Line No.")
         {
             Clustered = true;
         }
