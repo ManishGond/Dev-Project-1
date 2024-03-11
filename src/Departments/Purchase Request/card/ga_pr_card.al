@@ -17,7 +17,7 @@ page 50101 "GA PR Card"
                 {
                     ShowMandatory = true;
                     ApplicationArea = All;
-                    NotBlank = true; //this was the effect
+                    NotBlank = true;
                     trigger OnAssistEdit()// three dot 
                     begin
                         if AssistEdit(xRec) then
