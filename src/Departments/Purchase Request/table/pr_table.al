@@ -4,6 +4,7 @@ table 50100 "PurchaseRequisition Table"
     LookupPageId = "GA PR Card";
     DataCaptionFields = "Document No.", "Requestor Name";
     DrillDownPageID = "GA PR Card";
+    
 
 
     fields
