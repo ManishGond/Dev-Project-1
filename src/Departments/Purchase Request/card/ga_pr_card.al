@@ -102,6 +102,22 @@ page 50101 "GA PR Card"
                 }
 
             }
+            group(Report)
+            {
+                Caption='Reports';
+                Image= Report;
+                action(ShowReport)
+                {
+                    Image=Print;
+                    ApplicationArea=All;
+                    trigger OnAction();
+                    var
+                    GaPrReport : Report "GA PR Report";
+                    begin
+                        GaPrReport.Run();
+                    end;
+                }
+            }
         }
 
     }
