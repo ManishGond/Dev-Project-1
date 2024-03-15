@@ -1,7 +1,8 @@
 table 50111 "InventoryAsset table"
 {
     DataClassification = ToBeClassified;
-
+    LookupPageId = "InventoryAsset Card";
+    DataCaptionFields = "No.";
     fields
     {
         field(1; "Document Type"; Option)
@@ -21,10 +22,16 @@ table 50111 "InventoryAsset table"
             OptionMembers = Invenotry;
             DataClassification = ToBeClassified;
         }
-        field(4; "No."; Code[10])
+        field(4; "No."; Code[20])
         {
             Caption = 'No';
             DataClassification = ToBeClassified;
+            trigger OnValidate()
+            begin
+                if "No." <> xRec."No." then begin
+                    "No." := '';
+                end;
+            end;
         }
         field(5; "Posting Date"; Date)
         {
