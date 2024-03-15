@@ -100,15 +100,15 @@ page 50112 "InventoryAsset Card"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Get PR Lines")
             {
                 ApplicationArea = All;
                 
                 trigger OnAction()
+                var
                 begin
-                    
                 end;
-            }
+         }
         }
     }
     
