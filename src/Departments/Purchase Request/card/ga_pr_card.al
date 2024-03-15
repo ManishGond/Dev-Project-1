@@ -109,19 +109,21 @@ page 50101 "GA PR Card"
                 }
 
             }
-           group(Report)
+            group(Report)
             {
-                Caption='Reports';
-                Image= Report;
+                Caption = 'Reports';
+                Image = Report;
                 action(ShowReport)
                 {
-                    Image=Print;
-                    ApplicationArea=All;
+                    Image = Print;
+                    ApplicationArea = All;
                     trigger OnAction();
                     var
-                    GaPrReport : Report "GA PR Report";
+                        GA1: Record "PurchaseRequisition Table";
+
                     begin
-                        GaPrReport.Run();
+                        GA1.SetFilter("Document No.", rec."Document No.");
+                        Report.Run(Report::"GA PR Report",true,true,GA1);
                     end;
                 }
             }
