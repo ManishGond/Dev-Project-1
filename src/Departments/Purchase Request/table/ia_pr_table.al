@@ -70,6 +70,14 @@ table 50111 "InventoryAsset table"
             Caption = 'Assigned User ID';
             DataClassification = ToBeClassified;
         }
+        field(13; "Required advance payment"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(14; "Advance payment amount"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
