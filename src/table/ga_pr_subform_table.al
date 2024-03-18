@@ -4,6 +4,7 @@ table 50102 "GA PR Subform Table"
 
     fields
     {
+
         field(1; Type; Enum "GA PR Line Type Enum")
         {
             Caption = 'Type';
@@ -73,6 +74,12 @@ table 50102 "GA PR Subform Table"
         {
             Caption = 'Document No.';
             DataClassification = ToBeClassified;
+        }
+        field(16; Status; Option)
+        {
+            DataClassification = ToBeClassified;
+            OptionMembers = Open,"Pending Approval",Released;
+            Editable = false;
         }
 
 

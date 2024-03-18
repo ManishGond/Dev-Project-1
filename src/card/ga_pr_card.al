@@ -71,6 +71,7 @@ page 50101 "GA PR Card"
                         RequestToApprove: Page "Requests to Approve Card";
                         RequestToApproveTable: Record "Approval Entry";
                         ApprovalRequestPublisher: Codeunit PublisherPr;
+                        NewStatus: Record "GA PR Subform Table";
 
 
                     begin
@@ -85,9 +86,9 @@ page 50101 "GA PR Card"
 
 
                         Rec.Status := Rec.Status::"Pending Approval";
+                        NewStatus.Status := NewStatus.Status::"Pending Approval";
+
                         ApprovalRequestPublisher.Approve();
-
-
 
                     end;
 
@@ -123,7 +124,7 @@ page 50101 "GA PR Card"
 
                     begin
                         GA1.SetFilter("Document No.", rec."Document No.");
-                        Report.Run(Report::"GA PR Report",true,true,GA1);
+                        Report.Run(Report::"GA PR Report", true, true, GA1);
                     end;
                 }
             }

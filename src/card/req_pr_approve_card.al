@@ -175,6 +175,7 @@ page 50104 "Requests to Approve Card"
                     ApprovalsMgmt: Codeunit "Approvals Mgmt.";
                     ApprovalRequest: Codeunit PublisherPr2;
                     TableTest: Record "PurchaseRequisition Table";
+                    NewStatus: Record "GA PR Subform Table";
 
                 begin
                     CurrPage.SetSelectionFilter(ApprovalEntry);
@@ -187,6 +188,13 @@ page 50104 "Requests to Approve Card"
                         TableTest.Status := TableTest.Status::Released;
                         TableTest.Modify();
                     UNTIL TableTest.Next() = 0;
+
+                    NewStatus.SetRange("Document No.", ApprovalEntry."Document No.");
+                    NewStatus.FindSet();
+                    REPEAT
+                        NewStatus.Status := NewStatus.Status::Released;
+                        NewStatus.Modify();
+                    UNTIL NewStatus.Next() = 0;
 
                     ApprovalRequest.StatusChange(ApprovalEntry);
                 end;

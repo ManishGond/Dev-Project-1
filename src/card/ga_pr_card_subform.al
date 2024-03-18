@@ -88,6 +88,10 @@ page 50103 "GA PR Card Subform"
                     ApplicationArea = All;
 
                 }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = All;
+                }
 
 
             }
