@@ -1,9 +1,11 @@
 page 50102 GetPRPage
 {
-    PageType = List;
+    PageType = StandardDialog;
+    Caption = 'Get PR Page';
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "GA PR Subform Table";
+    Editable = false;
 
     layout
     {
@@ -50,18 +52,29 @@ page 50102 GetPRPage
     {
         area(Processing)
         {
-            action(ActionName)
-            {
-                ApplicationArea = All;
 
-                trigger OnAction()
-                begin
-
-                end;
-            }
         }
     }
 
+    trigger OnQueryClosePage(CloseAction: Action): Boolean;
+
     var
-        myInt: Integer;
+        table1: Record "Purchase Line";
+        table2: Record "GA PR Subform Table";
+    begin
+
+        if CloseAction = Action::OK then begin
+            table1.Type := table2.Type;
+            table1.Description := table2.Description;
+            table1."Description 2" := table2.Description2;
+            table1.Modify();
+        end
+        else begin
+            Message('Exited!');
+            exit(true);
+        end;
+
+    end;
+
+
 }

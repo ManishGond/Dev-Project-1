@@ -7,8 +7,6 @@ page 50100 "GA Purchase Requisition List"
     ApplicationArea = All;
     SourceTable = "PurchaseRequisition Table";
     CardPageId = "GA PR Card";
-    //PromotedActionCategories = 'New,Process,Report,New Document,Approve,Request Approval,Prices & Discounts,Navigate,Customer';
-
     layout
     {
         area(Content)

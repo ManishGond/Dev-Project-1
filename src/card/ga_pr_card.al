@@ -24,7 +24,10 @@ page 50101 "GA PR Card"
                             CurrPage.Update();
                     end;
                 }
-                field("Requestor Name"; Rec."Requestor Name") { ApplicationArea = All; }
+                field("Requestor Name"; Rec."Requestor Name")
+                {
+                    ApplicationArea = All;
+                }
                 field("Document Type"; Rec."Document Type") { ApplicationArea = All; }
                 field("Department Name"; Rec."Department Name") { ApplicationArea = All; }
                 field("Location Code"; Rec."Location Code") { ApplicationArea = All; }
@@ -150,32 +153,11 @@ page 50101 "GA PR Card"
     procedure AssistEdit(OldServHeader: Record "PurchaseRequisition Table"): Boolean
     begin
         GAHeader.Copy(Rec);
-        if NoSeriesMgt.SelectSeries(GetNoSeriesCode, OldServHeader."Document No.", Rec."Document No.") then begin
+        if NoSeriesMgt.SelectSeries('GA-DE-PR', OldServHeader."Document No.", Rec."Document No.") then begin
 
             NoSeriesMgt.SetSeries(Rec."Document No.");
             exit(true);
         end;
     end;
-
-    local procedure GetNoSeriesCode(): Code[20]
-    var
-        NoSeriesCode: Code[20];
-        IsHandled: Boolean;
-    begin
-        IsHandled := false;
-        NoSeriesCode := 'GA-DE-PR';
-        OnBeforeGetNoSeries(Rec, NoSeriesCode, IsHandled);
-        if not IsHandled then
-            exit(NoSeriesCode);
-
-    end;
-
-    [IntegrationEvent(false, false)]
-    local procedure OnBeforeGetNoSeries(var ServiceHeader: Record "PurchaseRequisition Table"; var NoSeriesCode: Code[20]; var IsHandled: Boolean)
-    begin
-
-    end;
-
-
 
 }
