@@ -44,7 +44,7 @@ table 50102 "GA PR Subform Table"
             Caption = 'Requestor User Id';
             DataClassification = ToBeClassified;
         }
-        field(10; "Requestor User Name"; Integer)
+        field(10; "Requestor User Name"; Text[100])
         {
             Caption = 'Requestor User Name';
             DataClassification = ToBeClassified;

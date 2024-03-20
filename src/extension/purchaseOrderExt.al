@@ -1,8 +1,16 @@
 pageextension 50100 PurchaseOrder extends "Purchase Order"
 {
+
     layout
     {
-        // Add changes to page layout here
+        addafter("Buy-from Vendor Name")
+        {
+            field("Document No."; Rec."Document No.")
+            {
+                ApplicationArea = All;
+
+            }
+        }
     }
 
     actions

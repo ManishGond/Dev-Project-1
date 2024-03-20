@@ -36,7 +36,6 @@ page 50103 "GA PR Card Subform"
                 field("Item No"; Rec."Item No")
                 {
                     ApplicationArea = All;
-                    Visible = false;
                 }
                 field("Unit Of Measure Code"; Rec."Unit Of Measure Code")
                 {
