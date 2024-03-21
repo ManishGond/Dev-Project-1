@@ -61,24 +61,14 @@ page 50102 GetPRPage
 
     var
         PurchLine: Record "Purchase Line";
-        table3: Record "Purchase Header";
+        PurchHeader: Record "Purchase Header";
     begin
 
         if CloseAction = Action::OK then begin
-            PurchLine."Document Type" := PurchLine."Document Type"::Order;
-            PurchLine."Document No." := 'GADE-2019-00050';
+            PurchLine.SetRange(Type, rec.Type);
             PurchLine.FindSet();
             PurchLine."Document No." := rec."Document No.";
-            table3.Modify();
-            // table2.SetRange("Document No.", table2."Document No.");
-            // table2.FindSet();
-            // repeat
-            //     table2.Get(table1."Document No.");
-            //     table1.Type := table2.Type;
-            //     table1."No." := table2."Document No.";
-            //     table1.Description := table2.Description;
-            //     table1.Modify();
-            // until table1.Next() = 0;
+            PurchHeader.Modify();
 
         end
         else begin
